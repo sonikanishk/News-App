@@ -1,0 +1,49 @@
+.Wrappp {
+    font-family: 'Nunito';
+    margin: 10px;
+    padding: 13px;
+    margin-top: 70px;
+  }
+  .heading{
+      text-align: center;
+      font-family: Cinzel;
+      font-weight: 600;
+      padding-bottom: 1rem;
+  }
+  
+  .content{
+      border-radius: 9999px;
+      background: rgba(83,138,228, 0.2);
+      margin-bottom: .5rem; 
+      margin-right: .25rem;  
+      padding-left: 2rem;
+      padding-right: 2rem;
+      padding-top: .5rem;
+      padding-bottom: .5rem;
+      display: inline-block;
+      color: #538AE4;
+      text-decoration: none;
+  }
+  .content:hover{
+      text-decoration: none;
+  }
+  .learn-more{
+      background-color: #d1e3f5;
+      opacity: 0.5;
+      
+  }
+  .learn-more a{
+      color: #1f05b7;
+      font-weight: 600;
+      
+  }
+  .learn-more a:hover{
+      text-decoration: none;
+  }
+  .sub-categories{
+      text-align: -webkit-center;
+  }
+  .News-data{
+      padding-top: 3rem;
+  }
+  

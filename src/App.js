@@ -1,52 +1,101 @@
-import React from 'react';
-import Axios from 'axios';
-import './App.css';
-import Globalview from './components/Globalview.js'
+// import React from 'react';
+// import './App.css';
+// import StateTable from './components/StateTable'
+// import Charts from './components/Charts'
+// import Maps from './components/Maps'
+// import Axios from 'axios';
+// import 'bootstrap/dist/css/bootstrap.min.css';
+// import Head from './Head'
+// import Footer from './Footer'
+// import Navbar from './components/Navbar';
 
-class App extends React.Component {
-  state = {
-    Coords: {
-      latitude: 45,
-      longitude: 45
-    },
-    GlobalData: "",
-    CountryData: "",
-    InputCountry: ""
-  }
-  componentDidMount() {
-    if(navigator){
-      console.log("supported")
-      navigator.geolocation.getCurrentPosition(position => {
-        let pos = {
-          latitude: position.coords.latitude,
-          longitude: position.coords.longitude
-        }
-        this.setState({Coords:pos})
-      })
-    }
-    else{
-      console.log("not supported")
-    }
-    Axios.get(`https://api.covid19api.com/summary`).then(res => {             
-      console.log(res)
-      let global = {
-        TotalDeaths: res.data.Global.TotalDeaths,
-        TotalConfirmed: res.data.Global.TotalConfirmed,
-        TotalRecovered: res.data.Global.TotalRecovered,
-      }
-      this.setState({GlobalData:global})
+
+// class App extends React.Component {
+//   state = {  
+//     status: {},
+//     states: [],
+//     withtime: [],
+//     tests: []
+//   }
+  
+//   componentDidMount() {
+
+//     Axios.get(`https://api.covid19india.org/data.json`).then(res => { 
+//       let curr_status = {
+//         deaths: res.data.statewise[0].deaths,
+//         confirmed: res.data.statewise[0].confirmed,
+//         recovered: res.data.statewise[0].recovered,
+//         time: res.data.statewise[0].lastupdatedtime,
+        
+//       };  
+//       this.setState({ status:curr_status });
+
+//       this.setState({states:res.data.statewise});
+//       this.setState({tests:res.data.tested});
+//       this.setState({withtime:res.data.cases_time_series});
       
-    })
-  }
-  render(){  
-    return (
-      <div className="App">
-        <div className="container">
-          <Globalview Data = {this.state.GlobalData} />
-        </div>
-      </div>
-    );
-  }
-}
+      
+//     }).catch(err => {
+//       console.log("error");
+//     })
+//   }
+  
+//   render() {
+//     return (
+//       <div className="wrappper">
+//          <Head/> 
+//          <Navbar/>
+//         <div className="App">
+//           <Charts data = {this.state.withtime} data1 = {this.state.tests} />
+//           <Maps states = {this.state.states}/>
+//           <StateTable states={this.state.states}/>
+//         </div>
+//           <Footer/>      
+//         </div>
+//     );
+//   }
+// }
+// export default App;
 
-export default App;
+import React from 'react';
+import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Head from './Head';
+import News from './components/News';
+import {BrowserRouter as Router,Route,Switch} from 'react-router-dom';
+import Footer from './Footer'
+import Business from './components/Business'
+import Sports from './components/Sports'
+import Health from './components/Health'
+import Entertainment from './components/Entertainment'
+import Science from './components/Science'
+import Technology from './components/Technology'
+
+export default function App(){
+  return(
+    <div style={{display:"flex",flexDirection:"column",minHeight:"100vh"}}>
+      <div style={{flex: "1"}}>
+    <Router>
+    <Head/>
+      <Switch>
+          <Route path="/" exact component = {News} />
+          <Route path="/Business" exact component = {Business} />
+          <Route path="/Sports" exact component = {Sports} />
+          <Route path="/Entertainment" exact component = {Entertainment} />
+          <Route path="/Health" exact component = {Health} />
+          <Route path="/Science" exact component = {Science} />
+          <Route path="/Technology" exact component = {Technology} />
+          
+      </Switch>
+    </Router>
+    </div>
+    <Footer/>
+    </div> 
+  );
+};
+
+
+
+
+        
+         
